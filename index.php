@@ -1,12 +1,23 @@
 <?php
-// Ativa exibição de erros no navegador
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// index.php
+require_once __DIR__ . '/controller/ClienteController.php';
 
-// Carrega o controlador do produto
-require_once __DIR__ . '/controllers/ProdutoController.php';
+$controller = new ClienteController();
+$action = isset($_GET['action']) ? $_GET['action'] : 'listar';
 
-// Instancia o controlador e chama a função listar
-$controller = new ProdutoController();
-$controller->listar();
+switch ($action) {
+    case 'criar':
+        $controller->criar();
+        break;
+    case 'editar':
+        $controller->editar();
+        break;
+    case 'excluir':
+        $controller->excluir();
+        break;
+    case 'listar':
+    default:
+        $controller->listar();
+        break;
+}
+?>
