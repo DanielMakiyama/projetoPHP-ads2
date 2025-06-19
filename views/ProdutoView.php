@@ -12,7 +12,7 @@
         <?php foreach ($produtos as $produto): ?> 
                 <li>
                     ID: <?= $produto->getId(); ?> - Descricao: <?= $produto->getDescricao(); ?>
-                                    - Preco: R$ <?= number_format($produto->getPreco(, 2,',','.')); ?>
+                                    - Preco: R$ <?= number_format($produto->getPreco(2,',','.')); ?>
                 </li>
             <?php endforeach; ?>
     </ul>
