@@ -5,6 +5,7 @@ class ProdutoController
     public function listar()
     {
         //Simulando a obtenção de dados de um banco de dados 
+        //produtos estes que serão associados aos pobres necessitados
         $produtos = [
             new Produto(1, "Camiseta", 44.99),
             new Produto(2, "Calça", 59.99),
