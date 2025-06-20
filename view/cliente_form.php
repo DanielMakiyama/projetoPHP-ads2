@@ -39,7 +39,8 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
 
                     <label for="endereco" class="sr-only">Endereço:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="endereco" placeholder= "Digite o endereço" name="endereco"
-                        value="<?php echo $cliente ? htmlspecialchars($cliente->getEndereco()) : ''; ?>" required>
+                      value="<?php echo $cliente && $cliente->getEndereco() !== null ? htmlspecialchars($cliente->getEndereco()) : ''; ?>" required>
+
                     
                 <label for="idade" class="sr-only">Idade:</label>
                 <input type="number" class="form-control mb-2 mr-sm-2" id="idade" placeholder= "Digite a idade" name="idade"
