@@ -15,7 +15,7 @@ $clientes = $_REQUEST['clientes'];
       align-items: center;
     }
 
-    /* Estilizar a tabela */
+    /* Estilizar a tabela */ 
     table {
       border-collapse: collapse;
       width: 100%;
@@ -45,19 +45,21 @@ $clientes = $_REQUEST['clientes'];
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Assistido</th>
-                <th scope="col"></th>
-                <th scope="col">Ações</th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col">Idade</th>
+                  <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
                 <?php foreach ($clientes as $cliente): ?>
               <tr>
-                <td><?php echo htmlspecialchars($cliente->getId()); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getId()); ?></td> 
                 <td><?php echo htmlspecialchars($cliente->getNome()); ?></td>
-                <td></td>
+                <td><?php echo htmlspecialchars($cliente->getEndereco()); ?></td> 
+                <td><?php echo htmlspecialchars($cliente->getIdade()); ?></td>
+                
                 <td>
                   <a href="index.php?action=editar&id=<?php echo $cliente->getId(); ?>"><button type="button" class="btn btn-success">Editar</button></a>
                   <a href="index.php?action=excluir&id=<?php echo $cliente->getId(); ?>" onclick="return confirm('Tem certeza que deseja excluir este cliente?')"><button type="button" class="btn btn-danger">Excluir</button></a>

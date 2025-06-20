@@ -6,8 +6,9 @@ class ClienteDAO{
     public function salvar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO clientes (nome) VALUES (?)");
-        $stmt->bind_param("s", $cliente->getNome());
+        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssi", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade());
+        
         $stmt->execute();
         $stmt->close();
         $conn->close();
@@ -16,8 +17,9 @@ class ClienteDAO{
     public function atualizar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("UPDATE clientes SET nome=? WHERE id=?");
-        $stmt->bind_param("si", $cliente->getNome(), $cliente->getId());
+        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=? WHERE id=?");
+        $stmt->bind_param("ssii", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade(), $cliente->getId());
+        
         $stmt->execute();
         $stmt->close();
         $conn->close();
@@ -36,12 +38,15 @@ class ClienteDAO{
     public function listar()
     {
         $conn =  Conexao::getConexao();
-        $result = $conn->query("SELECT id, nome FROM clientes");
+        $result = $conn->query("SELECT id, nome, endereco, idade FROM clientes");
         $clientes = [];
         while ($row = $result->fetch_assoc()) {
             $cliente = new Cliente();
             $cliente->setId($row['id']);
             $cliente->setNome($row['nome']);
+            $cliente->setEndereco($row['endereco']);
+            $cliente->setIdade($row['idade']);
+
             $clientes[] = $cliente;
         }
         $conn->close();

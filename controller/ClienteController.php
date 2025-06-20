@@ -18,6 +18,9 @@ class ClienteController
             $cliente = new Cliente();
             $clientedao = new ClienteDAO();
             $cliente->setNome($_POST['nome']);
+            $cliente->setEndereco($_POST['endereco']);
+            $cliente->setIdade($_POST['idade']);
+
             $clientedao->salvar($cliente);
             header('Location: index.php');
             exit();
@@ -32,9 +35,12 @@ class ClienteController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cliente->setId($_POST['id']);
             $cliente->setNome($_POST['nome']);
+            $cliente->setEndereco($_POST['endereco']);
+            $cliente->setIdade($_POST['idade']);
             $clientedao->atualizar($cliente);
             header('Location: index.php');
             exit();
+            
         } else {
             $cliente->setId($_GET['id']);
             $cliente = $clientedao->buscarPorId($cliente->getId());
