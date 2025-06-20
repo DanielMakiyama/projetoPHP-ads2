@@ -20,6 +20,13 @@ class ClienteController
             $cliente->setNome($_POST['nome']);
             $cliente->setEndereco($_POST['endereco']);
             $cliente->setIdade($_POST['idade']);
+            $cliente->setCpf($_POST['cpf']);
+            $cliente->setMedia($_POST['media']);
+            $cliente->setCasa($_POST['casa']);
+            $cliente->setPessoasCasa($_POST['pessoasCasa']);
+            $cliente->setCep($_POST['cep']);
+            $cliente->setNumTel($_POST['numTel']);
+            $cliente->setDataNasc($_POST['dataNasc']);
 
             $clientedao->salvar($cliente);
             header('Location: index.php');
@@ -37,6 +44,13 @@ class ClienteController
             $cliente->setNome($_POST['nome']);
             $cliente->setEndereco($_POST['endereco']);
             $cliente->setIdade($_POST['idade']);
+            $cliente->setCpf($_POST['cpf']);
+            $cliente->setMedia($_POST['media']);
+            $cliente->setCasa($_POST['casa']);
+            $cliente->setPessoasCasa($_POST['pessoasCasa']);
+            $cliente->setCep($_POST['cep']);
+            $cliente->setNumTel($_POST['numTel']);
+            $cliente->setDataNasc($_POST['dataNasc']);
             $clientedao->atualizar($cliente);
             header('Location: index.php');
             exit();

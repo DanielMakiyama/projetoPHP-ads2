@@ -57,8 +57,15 @@ $clientes = $_REQUEST['clientes'];
               <tr>
                 <td><?php echo htmlspecialchars($cliente->getId()); ?></td> 
                 <td><?php echo htmlspecialchars($cliente->getNome()); ?></td>
-                <td><?php echo htmlspecialchars($cliente->getEndereco()); ?></td> 
+                <td><?php echo htmlspecialchars($cliente->getEndereco() ?? ''); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getIdade()); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getCpf() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getMedia() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getCasa() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getPessoasCasa() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getCep() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getNumTel() ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getDataNasc() ?? ''); ?></td>
                 
                 <td>
                   <a href="index.php?action=editar&id=<?php echo $cliente->getId(); ?>"><button type="button" class="btn btn-success">Editar</button></a>
