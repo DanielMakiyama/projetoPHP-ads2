@@ -7,8 +7,8 @@ class ClienteDAO{
     {
         $conn =  Conexao::getConexao();
         $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, media, casa, pessoasCasa, cep, numTel,
-        dataNasc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssi", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade(), $cliente->getCpf(), $cliente->getMedia(),
+        dataNasc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssisisissi", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade(), $cliente->getCpf(), $cliente->getMedia(),
         $cliente->getCasa(), $cliente->getPessoasCasa(), $cliente->getCep(), $cliente->getNumTel(), $cliente->getDataNasc());
         
         $stmt->execute();
@@ -16,17 +16,44 @@ class ClienteDAO{
         $conn->close();
     }
 
-    public function atualizar(Cliente $cliente)
-    {
-        $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, media=?, casa=?, pessoasCasa=?, cep=?, numTel=?, getDataNasc=? WHERE id=?");
-        $stmt->bind_param("ssii", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade(), $cliente->getCpf(), $cliente->getMedia(),
-        $cliente->getCasa(), $cliente->getPessoasCasa(), $cliente->getCep(), $cliente->getNumTel(), $cliente->getDataNasc(), $cliente->getId());
-        
-        $stmt->execute();
-        $stmt->close();
-        $conn->close();
-    }
+ public function atualizar(Cliente $cliente)
+{
+    $conn = Conexao::getConexao();
+    $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, media=?, casa=?, pessoasCasa=?, cep=?, numTel=?, dataNasc=? WHERE id=?");
+
+    // Crie variáveis para passar por referência
+    $nome = $cliente->getNome();
+    $endereco = $cliente->getEndereco();
+    $idade = $cliente->getIdade();
+    $cpf = $cliente->getCpf();
+    $media = $cliente->getMedia();
+    $casa = $cliente->getCasa();
+    $pessoasCasa = $cliente->getPessoasCasa();
+    $cep = $cliente->getCep();
+    $numTel = $cliente->getNumTel();
+    $dataNasc = $cliente->getDataNasc();
+    $id = $cliente->getId();
+
+    $stmt->bind_param(
+        "ssississsi",
+        $nome,
+        $endereco,
+        $idade,
+        $cpf,
+        $media,
+        $casa,
+        $pessoasCasa,
+        $cep,
+        $numTel,
+        $dataNasc,
+        $id
+    );
+
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+
 
     public function excluir(Cliente $cliente)
     {

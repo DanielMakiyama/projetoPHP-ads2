@@ -55,7 +55,7 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                   
                         <label for="casa" class="sr-only">Casa:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="casa" placeholder= "Digite se a casa é alugada ou não" name="casa"
-                        value="<?php echo $cliente ? htmlspecialchars($cliente->getCasa()) : ''; ?>" required>    
+                     value="<?php echo $cliente && $cliente->getCasa() !== null ? htmlspecialchars($cliente->getCasa()) : ''; ?>" required>
                     
                         <label for="pessoasCasa" class="sr-only">PessoasCasa:</label>
                     <input type="number" class="form-control mb-2 mr-sm-2" id="pessoasCasa" placeholder= "Digite a quantidade de pessoas na casa" name="pessoasCasa"
