@@ -6,14 +6,15 @@ class ClienteDAO{
     public function salvar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep, mediaSal) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssisss", 
+        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep, mediaSal, casa) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssissss", 
             $cliente->getNome(),
             $cliente->getEndereco(),
             $cliente->getIdade(),
             $cliente->getCpf(),
             $cliente->getCep(),
-            $cliente->getMediaSal()
+            $cliente->getMediaSal(),
+            $cliente->getCasa()
         );
         $stmt->execute();
         $stmt->close();
@@ -23,14 +24,15 @@ class ClienteDAO{
     public function atualizar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=?, mediaSal=? WHERE id=?");
-        $stmt->bind_param("ssisssi",
+        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=?, mediaSal=?, casa=? WHERE id=?");
+        $stmt->bind_param("ssissssi",
             $cliente->getNome(),
             $cliente->getEndereco(), 
             $cliente->getIdade(), 
             $cliente->getCpf(), 
             $cliente->getCep(), 
             $cliente->getMediaSal(), 
+            $cliente->getCasa(), 
             $cliente->getId());
 
         $stmt->execute();
@@ -51,7 +53,7 @@ class ClienteDAO{
     public function listar()
     {
         $conn =  Conexao::getConexao();
-        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep, mediaSal FROM clientes");
+        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep, mediaSal, casa FROM clientes");
         $clientes = [];
         while ($row = $result->fetch_assoc()) {
             $cliente = new Cliente();
@@ -62,6 +64,7 @@ class ClienteDAO{
             $cliente->setCpf($row['cpf']);
             $cliente->setCep($row['cep']);
             $cliente->setMediaSal($row['mediaSal']);
+            $cliente->setCasa($row['casa']);
 
             $clientes[] = $cliente;
         }

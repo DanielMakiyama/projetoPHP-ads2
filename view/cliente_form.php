@@ -62,6 +62,15 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                         <option value="2001+" <?= ($cliente && $cliente->getMediaSal() == "2001+") ? 'selected' : '' ?>>Acima de R$2.000</option>
                     </select>
 
+                    <label for="casa" class="sr-only">Situação de moradia</label>
+                    <select class="form-control mb-2 mr-sm-2" id="casa" name="casa" required>
+                        <option value="">Selecione a situação atual da casa</option>
+                        <option value="Situação 1" <?= ($cliente && $cliente->getCasa() === "Situação") ? 'selected' : '' ?>>Situação 1</option>
+                        <option value="Situação 2" <?= ($cliente && $cliente->getCasa() == "Situação") ? 'selected' : '' ?>>Situação 2</option>
+                        <option value="Situação 3" <?= ($cliente && $cliente->getCasa() == "Situação") ? 'selected' : '' ?>>Situação 3</option>
+                        <option value="Situação 4" <?= ($cliente && $cliente->getCasa() == "Situação") ? 'selected' : '' ?>>Situação 4</option>
+                    </select>
+
                   
 
                             

@@ -8,6 +8,7 @@ class Cliente {
     private $cpf;
     private $cep;
     private $mediaSal;
+    private $casa;
 
 
     public function setId($id)
@@ -69,5 +70,14 @@ class Cliente {
     public function getMediaSal()
     {
         return $this->mediaSal;
+    }
+
+    public function setCasa($casa){
+        $this->casa = $casa;
+    }
+
+    public function getCasa()
+    {
+        return $this->casa;
     }
 }
