@@ -7,31 +7,76 @@ $clientes = $_REQUEST['clientes'];
 <html>
 
 <head>
-  <style>
-    /* Centralizar o div */
-    .center-div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Estilizar a tabela */ 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th,
-    tr,
-    td {
-      padding: 8px;
-      text-align: center;
-    }
-  </style>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <title>Implementando MVC</title>
+  <title>Sistema SSVP</title>
+  <meta name="description" content= "Texto teste para a description"> 
+  <link rel="stylesheet" type="text/css" href="/projeto/style.css">
 </head>
+
+<body>
+  <header>
+    <nav>
+      <span class="logo">SSVP</span>
+      <ul class="menu">
+        <li><a>Início</a></li>
+        <li><a>Lista de Assistidos</a></li>
+        <li><a>Pag 3</a></li>
+      </ul>
+      <a class="git">Github</a>
+    </nav>
+  </header>
+
+  
+  <main>
+      <div class="hero-principal"><
+        <section class="hero">
+          <header class="hero-content">
+            <span class="cor-azul">SISTEMA DE ORGANIZAÇÃO PARA CONFERÊNCIAS</span>
+            <h1>Sociedade São Vicente de Paulo</h1>
+            <hr/>
+            <h2 class="hero-sub">Conferência Nossa Senhora Aparecida</h2>
+          </header>
+          <div class="hero-figures">
+            <figure><img src="ssvp_logo.jpg"></figure>
+          </div>
+        </section>
+      </div>
+
+      <section class="text1">
+        <header class="text1-cabeca">
+          <span class="cor-azul">TRABALHO ACADÊMICO ORIENTADO PELO PROFESSOR PEDRO TOLEDO</span>
+          <h2 class="text1-title">Sistema CRUD com banco de dados</h2>
+          <p class="text1-subtitle">Pensando em 2019 quando eu participava de uma organização da minha igreja católica
+            que era a SSVP, eu lembrei que toda a documentação das pessoas que a sociedade ajudava
+            era totalmente feita em papéis, nada era documentado virtualmente. Diante disso resolvi aproveitar e aplicar 
+            este trabalho neste tema.
+          </p>
+        </header>
+
+          <div class="text1-container">
+            <div class="text1-card">
+              <header class="text1-card-cabeca">
+                <div class="text1-card-detalhes">
+                  <span classe="cor-2">Um pouco sobre...</span>
+                  <h3>O que é a SSVP?</h3>
+                  <p class="cor-branca">A Sociedade São Vicente de Paulo é uma organização católica que se dedica a ajudar
+                    os mais necessitados através de caridade e do serviço. Fundado em 18833 por Antônio Frederico
+                  Ozam. </p>
+                </div>  
+              </header>
+              <p>outra coisa q n sei oq é vai se fuder</p>
+            <div>
+                <span>OUTRO DIV MANO Q ISSO</span>
+          </div>
+      </section>
+  </main>
+
+  <footer>
+      <p class="text1-title"> TRABALHO FEITO POR: </p>
+      <p class="autores"> Daniel Shizuo Moura Makiyama </p>
+      <p class="autores"> Fabricio de Souza Gonçalves </p>
+  </footer>
+
 
 <body>
   <br><br><br>
