@@ -26,6 +26,7 @@ class ClienteController
             $cliente->setCasa($_POST['casa']);
             $cliente->setPessoasCasa($_POST['pessoasCasa']);
             $cliente->setNumTel($_POST['numTel']);
+            $cliente->setDataNasc($_POST['dataNasc']);
 
             $clientedao->salvar($cliente);
             header('Location: index.php');
@@ -49,6 +50,7 @@ class ClienteController
             $cliente->setCasa($_POST['casa']);
             $cliente->setPessoasCasa($_POST['pessoasCasa']);
             $cliente->setNumTel($_POST['numTel']);
+            $cliente->setDataNasc($_POST['dataNasc']);
             $clientedao->atualizar($cliente);
             header('Location: index.php');
             exit();

@@ -11,6 +11,7 @@ class Cliente {
     private $casa;
     private $pessoasCasa;
     private $numTel;
+    private $dataNasc;
 
 
     public function setId($id)
@@ -99,5 +100,14 @@ class Cliente {
     public function getNumTel()
     {
         return $this->numTel;
+    }
+
+    public function setDataNasc($dataNasc){
+        $this->dataNasc = $dataNasc;
+    }
+
+    public function getDataNasc()
+    {
+        return $this->dataNasc;
     }
 }

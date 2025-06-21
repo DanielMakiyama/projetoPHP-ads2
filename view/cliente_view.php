@@ -55,6 +55,7 @@ $clientes = $_REQUEST['clientes'];
                   <th scope="col">Stiuação de moradia</th>
                   <th scope="col">Quantidade de Pessoas na casa</th>
                   <th scope="col">Número de Telefone</th>
+                  <th scope="col">Data de Nascimento</th>
                   <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -71,6 +72,7 @@ $clientes = $_REQUEST['clientes'];
                 <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getCasa() !== null ? $cliente->getCasa() : ''); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getPessoasCasa()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getNumTel()); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getDataNasc()); ?></td>
 
 
                 

@@ -77,7 +77,11 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                   
                     <label for="numTel" class="sr-only">Número de Telefone:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="numTel" placeholder= "Digite o número de telefone..." name="numTel"
-                            value="<?= htmlspecialchars($cliente->numTel ?? '') ?>" required>          
+                            value="<?= htmlspecialchars($cliente->numTel ?? '') ?>" required> 
+
+                   <input type="date" class="form-control mb-2 mr-sm-2" id="dataNasc" name="dataNasc"
+       value="<?= htmlspecialchars($cliente->dataNasc ?? '') ?>" required>
+     
 
                             
                     <button type="submit"class="btn btn-primary mb-2">
