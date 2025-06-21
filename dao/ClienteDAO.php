@@ -6,13 +6,14 @@ class ClienteDAO{
     public function salvar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssiss", 
+        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep, mediaSal) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssisss", 
             $cliente->getNome(),
             $cliente->getEndereco(),
             $cliente->getIdade(),
             $cliente->getCpf(),
-            $cliente->getCep()
+            $cliente->getCep(),
+            $cliente->getMediaSal()
         );
         $stmt->execute();
         $stmt->close();
@@ -22,13 +23,14 @@ class ClienteDAO{
     public function atualizar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=? WHERE id=?");
-        $stmt->bind_param("ssissi",
+        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=?, mediaSal=? WHERE id=?");
+        $stmt->bind_param("ssisssi",
             $cliente->getNome(),
             $cliente->getEndereco(), 
             $cliente->getIdade(), 
             $cliente->getCpf(), 
             $cliente->getCep(), 
+            $cliente->getMediaSal(), 
             $cliente->getId());
 
         $stmt->execute();
@@ -49,7 +51,7 @@ class ClienteDAO{
     public function listar()
     {
         $conn =  Conexao::getConexao();
-        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep FROM clientes");
+        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep, mediaSal FROM clientes");
         $clientes = [];
         while ($row = $result->fetch_assoc()) {
             $cliente = new Cliente();
@@ -59,6 +61,7 @@ class ClienteDAO{
             $cliente->setIdade($row['idade']);
             $cliente->setCpf($row['cpf']);
             $cliente->setCep($row['cep']);
+            $cliente->setMediaSal($row['mediaSal']);
 
             $clientes[] = $cliente;
         }

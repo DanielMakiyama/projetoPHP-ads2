@@ -51,6 +51,7 @@ $clientes = $_REQUEST['clientes'];
                   <th scope="col">Idade</th>
                   <th scope="col">Cpf</th>
                   <th scope="col">Cep</th>
+                  <th scope="col">Media Salárial</th>
                   <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -63,6 +64,8 @@ $clientes = $_REQUEST['clientes'];
                 <td><?php echo htmlspecialchars($cliente->getIdade()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getCpf()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getCep()); ?></td>
+               <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getMediaSal() !== null ? $cliente->getMediaSal() : ''); ?></td>
+
 
                 
 

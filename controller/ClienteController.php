@@ -22,6 +22,7 @@ class ClienteController
             $cliente->setIdade($_POST['idade']);
             $cliente->setCpf($_POST['cpf']);
             $cliente->setCep($_POST['cep']);
+            $cliente->setMediaSal($_POST['mediaSal']);
 
             $clientedao->salvar($cliente);
             header('Location: index.php');
@@ -41,6 +42,7 @@ class ClienteController
             $cliente->setIdade($_POST['idade']);
             $cliente->setCpf($_POST['cpf']);
             $cliente->setCep($_POST['cep']);
+            $cliente->setMediaSal($_POST['mediaSal']);
             $clientedao->atualizar($cliente);
             header('Location: index.php');
             exit();

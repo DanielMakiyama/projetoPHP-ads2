@@ -7,6 +7,7 @@ class Cliente {
     private $idade;
     private $cpf;
     private $cep;
+    private $mediaSal;
 
 
     public function setId($id)
@@ -59,5 +60,14 @@ class Cliente {
     public function getCep()
     {
         return $this->cep;
+    }
+
+    public function setMediaSal($mediaSal){
+        $this->mediaSal = $mediaSal;
+    }
+
+    public function getMediaSal()
+    {
+        return $this->mediaSal;
     }
 }

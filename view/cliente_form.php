@@ -53,6 +53,18 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                     <input type="text" class="form-control mb-2 mr-sm-2" id="cep" placeholder= "Digite o CEP..." name="cep"
                             value="<?= htmlspecialchars($cliente->cep ?? '') ?>" required>   
 
+                    <label for="mediaSal" class="sr-only">Média Salarial:</label>
+                    <select class="form-control mb-2 mr-sm-2" id="mediaSal" name="mediaSal" required>
+                        <option value="">Selecione a faixa salarial</option>
+                        <option value="0-500" <?= ($cliente && $cliente->getMediaSal() === "0-500") ? 'selected' : '' ?>>Até R$500</option>
+                        <option value="501-1000" <?= ($cliente && $cliente->getMediaSal() == "501-1000") ? 'selected' : '' ?>>R$501 a R$1.000</option>
+                        <option value="1001-2000" <?= ($cliente && $cliente->getMediaSal() == "1001-2000") ? 'selected' : '' ?>>R$1.001 a R$2.000</option>
+                        <option value="2001+" <?= ($cliente && $cliente->getMediaSal() == "2001+") ? 'selected' : '' ?>>Acima de R$2.000</option>
+                    </select>
+
+                  
+
+                            
                     <button type="submit"class="btn btn-primary mb-2">
                         <?php echo $cliente ? 'Salvar' : 'Adicionar'; ?></button>
                 </form>
