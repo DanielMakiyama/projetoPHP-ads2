@@ -4,17 +4,34 @@ require_once __DIR__ . '/../model/Cliente.php';
 
 class ClienteDAO{
     public function salvar(Cliente $cliente)
-    {
-        $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, media, casa, pessoasCasa, cep, numTel,
-        dataNasc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssisisissi", $cliente->getNome(), $cliente->getEndereco(), $cliente->getIdade(), $cliente->getCpf(), $cliente->getMedia(),
-        $cliente->getCasa(), $cliente->getPessoasCasa(), $cliente->getCep(), $cliente->getNumTel(), $cliente->getDataNasc());
-        
-        $stmt->execute();
-        $stmt->close();
-        $conn->close();
-    }
+{
+    $conn =  Conexao::getConexao();
+
+    $stmt = $conn->prepare("INSERT INTO clientes 
+        (nome, endereco, idade, cpf, media, casa, pessoasCasa, cep, numTel, dataNasc) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $nome = $cliente->getNome();
+    $endereco = $cliente->getEndereco();
+    $idade = $cliente->getIdade();
+    $cpf = $cliente->getCpf();
+    $media = $cliente->getMedia();
+    $casa = $cliente->getCasa();
+    $pessoasCasa = $cliente->getPessoasCasa();
+    $cep = $cliente->getCep();
+    $numTel = $cliente->getNumTel();
+    $dataNasc = $cliente->getDataNasc();
+
+    $stmt->bind_param("ssiiisiiis", 
+        $nome, $endereco, $idade, $cpf, $media,
+        $casa, $pessoasCasa, $cep, $numTel, $dataNasc
+    );
+
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+
 
  public function atualizar(Cliente $cliente)
 {
@@ -34,8 +51,7 @@ class ClienteDAO{
     $dataNasc = $cliente->getDataNasc();
     $id = $cliente->getId();
 
-    $stmt->bind_param(
-        "ssississsi",
+    $stmt->bind_param("ssiiisiiiii",
         $nome,
         $endereco,
         $idade,

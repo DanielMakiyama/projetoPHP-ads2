@@ -13,6 +13,7 @@ class Cliente {
     private $numTel;
     private $dataNasc;
 
+    //id
     public function setId($id){
         $this->id = $id;
     }
@@ -20,6 +21,7 @@ class Cliente {
         return $this->id;
     }
 
+    //nome do assistido
     public function setNome($nome){
         $this->nome = $nome;
     }
@@ -28,6 +30,7 @@ class Cliente {
         return $this->nome;
     }
 
+    //endereço
     public function setEndereco($endereco){
         $this->endereco = $endereco;
     }
@@ -36,6 +39,7 @@ class Cliente {
         return $this->endereco;
     }
 
+    //idade do assistido
     public function setIdade($idade){
         $this->idade = $idade;
     }
@@ -44,6 +48,7 @@ class Cliente {
         return $this->idade;
     }
 
+    //cpf
     public function setCpf($cpf){
         $this->cpf = $cpf;
     }
@@ -52,6 +57,7 @@ class Cliente {
         return $this->cpf;
     }
 
+    //média salárial 
     public function setMedia($media){
         $this->media = $media;
     }
@@ -60,6 +66,7 @@ class Cliente {
         return $this->media;
     }
 
+    //estado atual da casa
     public function setCasa($casa){
         $this->casa = $casa;
     }
@@ -68,6 +75,7 @@ class Cliente {
         return $this->casa;
     }
     
+    //numero de pessoas dentro da casa
     public function setPessoasCasa($pessoasCasa){
         $this->pessoasCasa = $pessoasCasa;
     }
@@ -76,6 +84,7 @@ class Cliente {
         return $this->pessoasCasa;
     }
     
+    //cep
     public function setCep($cep){
         $this->cep = $cep;
     }
@@ -84,6 +93,7 @@ class Cliente {
         return $this->cep;
     }
     
+    //numero de telefone 
     public function setnumTel($numTel){
         $this->numTel = $numTel;
     }
@@ -92,6 +102,7 @@ class Cliente {
         return $this->numTel;
     }
 
+    //data de nascimento
     public function setdataNasc($dataNasc){
         $this->dataNasc = $dataNasc;
     }
