@@ -4,72 +4,37 @@ require_once __DIR__ . '/../model/Cliente.php';
 
 class ClienteDAO{
     public function salvar(Cliente $cliente)
-{
-    $conn =  Conexao::getConexao();
+    {
+        $conn =  Conexao::getConexao();
+        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssiss", 
+            $cliente->getNome(),
+            $cliente->getEndereco(),
+            $cliente->getIdade(),
+            $cliente->getCpf(),
+            $cliente->getCep()
+        );
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
 
-    $stmt = $conn->prepare("INSERT INTO clientes 
-        (nome, endereco, idade, cpf, media, casa, pessoasCasa, cep, numTel, dataNasc) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    public function atualizar(Cliente $cliente)
+    {
+        $conn =  Conexao::getConexao();
+        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=? WHERE id=?");
+        $stmt->bind_param("ssissi",
+            $cliente->getNome(),
+            $cliente->getEndereco(), 
+            $cliente->getIdade(), 
+            $cliente->getCpf(), 
+            $cliente->getCep(), 
+            $cliente->getId());
 
-    $nome = $cliente->getNome();
-    $endereco = $cliente->getEndereco();
-    $idade = $cliente->getIdade();
-    $cpf = $cliente->getCpf();
-    $media = $cliente->getMedia();
-    $casa = $cliente->getCasa();
-    $pessoasCasa = $cliente->getPessoasCasa();
-    $cep = $cliente->getCep();
-    $numTel = $cliente->getNumTel();
-    $dataNasc = $cliente->getDataNasc();
-
-    $stmt->bind_param("ssiiisiiis", 
-        $nome, $endereco, $idade, $cpf, $media,
-        $casa, $pessoasCasa, $cep, $numTel, $dataNasc
-    );
-
-    $stmt->execute();
-    $stmt->close();
-    $conn->close();
-}
-
-
- public function atualizar(Cliente $cliente)
-{
-    $conn = Conexao::getConexao();
-    $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, media=?, casa=?, pessoasCasa=?, cep=?, numTel=?, dataNasc=? WHERE id=?");
-
-    // Crie variáveis para passar por referência
-    $nome = $cliente->getNome();
-    $endereco = $cliente->getEndereco();
-    $idade = $cliente->getIdade();
-    $cpf = $cliente->getCpf();
-    $media = $cliente->getMedia();
-    $casa = $cliente->getCasa();
-    $pessoasCasa = $cliente->getPessoasCasa();
-    $cep = $cliente->getCep();
-    $numTel = $cliente->getNumTel();
-    $dataNasc = $cliente->getDataNasc();
-    $id = $cliente->getId();
-
-    $stmt->bind_param("ssiiisiiiii",
-        $nome,
-        $endereco,
-        $idade,
-        $cpf,
-        $media,
-        $casa,
-        $pessoasCasa,
-        $cep,
-        $numTel,
-        $dataNasc,
-        $id
-    );
-
-    $stmt->execute();
-    $stmt->close();
-    $conn->close();
-}
-
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
 
     public function excluir(Cliente $cliente)
     {
@@ -84,7 +49,7 @@ class ClienteDAO{
     public function listar()
     {
         $conn =  Conexao::getConexao();
-        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, media, casa, pessoasCasa, cep, numTel, dataNasc FROM clientes");
+        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep FROM clientes");
         $clientes = [];
         while ($row = $result->fetch_assoc()) {
             $cliente = new Cliente();
@@ -93,12 +58,7 @@ class ClienteDAO{
             $cliente->setEndereco($row['endereco']);
             $cliente->setIdade($row['idade']);
             $cliente->setCpf($row['cpf']);
-            $cliente->setMedia($row['media']);
-            $cliente->setCasa($row['casa']);
-            $cliente->setPessoasCasa($row['pessoasCasa']);
             $cliente->setCep($row['cep']);
-            $cliente->setNumTel($row['numTel']);
-            $cliente->setDataNasc($row['dataNasc']);
 
             $clientes[] = $cliente;
         }
