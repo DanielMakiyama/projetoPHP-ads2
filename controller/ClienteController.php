@@ -24,6 +24,8 @@ class ClienteController
             $cliente->setCep($_POST['cep']);
             $cliente->setMediaSal($_POST['mediaSal']);
             $cliente->setCasa($_POST['casa']);
+            $cliente->setPessoasCasa($_POST['pessoasCasa']);
+            $cliente->setNumTel($_POST['numTel']);
 
             $clientedao->salvar($cliente);
             header('Location: index.php');
@@ -45,6 +47,8 @@ class ClienteController
             $cliente->setCep($_POST['cep']);
             $cliente->setMediaSal($_POST['mediaSal']);
             $cliente->setCasa($_POST['casa']);
+            $cliente->setPessoasCasa($_POST['pessoasCasa']);
+            $cliente->setNumTel($_POST['numTel']);
             $clientedao->atualizar($cliente);
             header('Location: index.php');
             exit();

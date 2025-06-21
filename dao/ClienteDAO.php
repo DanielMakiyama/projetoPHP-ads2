@@ -6,7 +6,7 @@ class ClienteDAO{
     public function salvar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep, mediaSal, casa) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO clientes (nome, endereco, idade, cpf, cep, mediaSal, casa, pessoasCasa, numTel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssissss", 
             $cliente->getNome(),
             $cliente->getEndereco(),
@@ -14,7 +14,9 @@ class ClienteDAO{
             $cliente->getCpf(),
             $cliente->getCep(),
             $cliente->getMediaSal(),
-            $cliente->getCasa()
+            $cliente->getCasa(),
+            $cliente->getPessoasCasa(),
+            $cliente->getNumTel()
         );
         $stmt->execute();
         $stmt->close();
@@ -24,8 +26,8 @@ class ClienteDAO{
     public function atualizar(Cliente $cliente)
     {
         $conn =  Conexao::getConexao();
-        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=?, mediaSal=?, casa=? WHERE id=?");
-        $stmt->bind_param("ssissssi",
+        $stmt = $conn->prepare("UPDATE clientes SET nome=?, endereco=?, idade=?, cpf=?, cep=?, mediaSal=?, casa=?, pessoasCasa=?, numTel=? WHERE id=?");
+        $stmt->bind_param("ssissssisi",
             $cliente->getNome(),
             $cliente->getEndereco(), 
             $cliente->getIdade(), 
@@ -33,6 +35,8 @@ class ClienteDAO{
             $cliente->getCep(), 
             $cliente->getMediaSal(), 
             $cliente->getCasa(), 
+            $cliente->getPessoasCasa(), 
+            $cliente->getNumTel(), 
             $cliente->getId());
 
         $stmt->execute();
@@ -53,7 +57,7 @@ class ClienteDAO{
     public function listar()
     {
         $conn =  Conexao::getConexao();
-        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep, mediaSal, casa FROM clientes");
+        $result = $conn->query("SELECT id, nome, endereco, idade, cpf, cep, mediaSal, casa, pessoasCasa, numTel FROM clientes");
         $clientes = [];
         while ($row = $result->fetch_assoc()) {
             $cliente = new Cliente();
@@ -65,6 +69,8 @@ class ClienteDAO{
             $cliente->setCep($row['cep']);
             $cliente->setMediaSal($row['mediaSal']);
             $cliente->setCasa($row['casa']);
+            $cliente->setPessoasCasa($row['pessoasCasa']);
+            $cliente->setNumTel($row['numTel']);
 
             $clientes[] = $cliente;
         }

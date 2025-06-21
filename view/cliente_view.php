@@ -53,6 +53,8 @@ $clientes = $_REQUEST['clientes'];
                   <th scope="col">Cep</th>
                   <th scope="col">Media Salárial</th>
                   <th scope="col">Stiuação de moradia</th>
+                  <th scope="col">Quantidade de Pessoas na casa</th>
+                  <th scope="col">Número de Telefone</th>
                   <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -65,8 +67,10 @@ $clientes = $_REQUEST['clientes'];
                 <td><?php echo htmlspecialchars($cliente->getIdade()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getCpf()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getCep()); ?></td>
-               <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getMediaSal() !== null ? $cliente->getMediaSal() : ''); ?></td>
-               <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getCasa() !== null ? $cliente->getCasa() : ''); ?></td>
+                <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getMediaSal() !== null ? $cliente->getMediaSal() : ''); ?></td>
+                <td><?php echo htmlspecialchars(isset($cliente) && $cliente->getCasa() !== null ? $cliente->getCasa() : ''); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getPessoasCasa()); ?></td>
+                <td><?php echo htmlspecialchars($cliente->getNumTel()); ?></td>
 
 
                 

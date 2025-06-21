@@ -9,6 +9,8 @@ class Cliente {
     private $cep;
     private $mediaSal;
     private $casa;
+    private $pessoasCasa;
+    private $numTel;
 
 
     public function setId($id)
@@ -79,5 +81,23 @@ class Cliente {
     public function getCasa()
     {
         return $this->casa;
+    }
+
+    public function setPessoasCasa($pessoasCasa){
+        $this->pessoasCasa = $pessoasCasa;
+    }
+
+    public function getPessoasCasa()
+    {
+        return $this->pessoasCasa;
+    }
+
+    public function setNumTel($numTel){
+        $this->numTel = $numTel;
+    }
+
+    public function getNumTel()
+    {
+        return $this->numTel;
     }
 }

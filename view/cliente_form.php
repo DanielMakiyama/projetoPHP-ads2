@@ -70,8 +70,14 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                         <option value="Situação 3" <?= ($cliente && $cliente->getCasa() == "Situação") ? 'selected' : '' ?>>Situação 3</option>
                         <option value="Situação 4" <?= ($cliente && $cliente->getCasa() == "Situação") ? 'selected' : '' ?>>Situação 4</option>
                     </select>
-
+                    
+                    <label for="pessoasCasa" class="sr-only">Pessoas na casa:</label>
+                    <input type="number" class="form-control mb-2 mr-sm-2" id="pessoasCasa" placeholder= "Digite a quantidade das pessoas..." name="pessoasCasa"
+                            value="<?php echo $cliente ? htmlspecialchars($cliente->getPessoasCasa()) : ''; ?>" required>  
                   
+                    <label for="numTel" class="sr-only">Número de Telefone:</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="numTel" placeholder= "Digite o número de telefone..." name="numTel"
+                            value="<?= htmlspecialchars($cliente->numTel ?? '') ?>" required>          
 
                             
                     <button type="submit"class="btn btn-primary mb-2">
