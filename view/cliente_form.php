@@ -8,6 +8,7 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
 <head>
     <meta charset="UTF-8">
     <title>Implementando MVC</title>
+    <link rel="stylesheet" type="text/css" href="/projeto/style.css">
 </head>
 
 <body>
@@ -30,19 +31,19 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
 
                     <label for="endereco" class="sr-only">Endereço:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="endereco" placeholder= "Digite o endereço..." name="endereco"
-                      value="<?php echo $cliente && $cliente->getEndereco() !== null ? htmlspecialchars($cliente->getEndereco()) : ''; ?>" required>
+                        value="<?php echo $cliente && $cliente->getEndereco() !== null ? htmlspecialchars($cliente->getEndereco()) : ''; ?>" required>
 
                     <label for="idade" class="sr-only">Idade:</label>
                     <input type="number" class="form-control mb-2 mr-sm-2" id="idade" placeholder= "Digite a idade..." name="idade"
-                            value="<?php echo $cliente ? htmlspecialchars($cliente->getIdade()) : ''; ?>" required>    
+                        value="<?php echo $cliente ? htmlspecialchars($cliente->getIdade()) : ''; ?>" required>    
 
                     <label for="cpf" class="sr-only">Cpf:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="cpf" placeholder= "Digite o CPF..." name="cpf"
-                            value="<?= htmlspecialchars($cliente->cpf ?? '') ?>" required>   
+                        value="<?= htmlspecialchars($cliente->cpf ?? '') ?>" required>   
 
                     <label for="cep" class="sr-only">Cep:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="cep" placeholder= "Digite o CEP..." name="cep"
-                            value="<?= htmlspecialchars($cliente->cep ?? '') ?>" required>   
+                        value="<?= htmlspecialchars($cliente->cep ?? '') ?>" required>   
 
                     <label for="mediaSal" class="sr-only">Média Salarial:</label>
                     <select class="form-control mb-2 mr-sm-2" id="mediaSal" name="mediaSal" required>
@@ -64,14 +65,14 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : null;
                     
                     <label for="pessoasCasa" class="sr-only">Pessoas na casa:</label>
                     <input type="number" class="form-control mb-2 mr-sm-2" id="pessoasCasa" placeholder= "Digite a quantidade das pessoas..." name="pessoasCasa"
-                            value="<?php echo $cliente ? htmlspecialchars($cliente->getPessoasCasa()) : ''; ?>" required>  
+                        value="<?php echo $cliente ? htmlspecialchars($cliente->getPessoasCasa()) : ''; ?>" required>  
                   
                     <label for="numTel" class="sr-only">Número de Telefone:</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="numTel" placeholder= "Digite o número de telefone..." name="numTel"
-                            value="<?= htmlspecialchars($cliente->numTel ?? '') ?>" required> 
+                        value="<?= htmlspecialchars($cliente->numTel ?? '') ?>" required> 
 
                    <input type="date" class="form-control mb-2 mr-sm-2" id="dataNasc" name="dataNasc"
-       value="<?= htmlspecialchars($cliente->dataNasc ?? '') ?>" required>
+                        value="<?= htmlspecialchars($cliente->dataNasc ?? '') ?>" required>
      
 
                             

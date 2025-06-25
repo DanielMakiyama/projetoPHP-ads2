@@ -28,12 +28,37 @@ nav{
     max-width: 1120px;
     margin: auto;
     padding: 1.5rem, 10rem;
-
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    color: #20375a;
+    font-family: Montserrat;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+h3{
+    color: #000000;
+    font-family: Montserrat;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+hr{
+    border-color: #20375a;
+}
+
 
 .logo{
     font-family: teko;
@@ -61,14 +86,8 @@ nav{
     font-weight: 600;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-}
 
 .hero{
-   
-
     max-width: 1120px;
     height: 30vh;
 
@@ -100,7 +119,7 @@ main{
     font-family: Inter;
     font-size: 1rem;
     font-weight: 1000;
-    color:  #08306b;
+    color:  #ffffff;
     text-transform: uppercase;
 }
 .cor-branca{
@@ -110,40 +129,23 @@ main{
     color:  #ffffff;
    
 }
-
-h1{
-    color: #20375a;
-    font-family: Montserrat;
-    font-size: 3.5rem;
-    font-weight: 800;
-    text-align: center;
+.cor-branca-title{
+     color: #ffffff;
+    
+   
 }
 
-h3{
-    color: #000000;
-    font-family: Montserrat;
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-align: center;
-}
 
 .hero-sub{
     color: rgb(58, 72, 134);
     font-family: Inter;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     border: 2px solid rgb(58, 72, 134);
     text-align: center;
     border-radius: 10px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-hr{
-    border-color: #20375a;
 }
 
 .text1{
@@ -185,7 +187,7 @@ hr{
     gap: 2rem; 
 }
 
-.text1-card{
+.text1-container-card{
     background:#20375a;
     padding: 2rem;
     border-radius: 0.5rem;
@@ -196,7 +198,7 @@ hr{
     
 }
 
-.text1-card-cabeca{
+.text1-container-cabeca{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -204,7 +206,7 @@ hr{
     
 }
 
-.text1-card-detalhes{
+.text1-container-detalhes{
     display: flex;
     flex-direction: column;
     gap: 0.5;

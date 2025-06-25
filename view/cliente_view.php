@@ -11,24 +11,73 @@ $clientes = $_REQUEST['clientes'];
   <title>Sistema SSVP</title>
   <meta name="description" content= "Texto teste para a description"> 
   <link rel="stylesheet" type="text/css" href="/projeto/style.css">
+
+  <style>
+    footer {
+    text-align: left;
+    }
+    .center-div {
+    text-align: center;
+    }
+
+    table{
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 3rem;
+    }
+
+    th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+
+    }
+
+    th {  
+    background-color:#20375a;
+    font-weight: bold;
+    color:white;
+    }
+    a button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    }
+
+    a button:hover {
+    background-color: #0056b3;
+    }
+
+    a[href*="criar"] button {
+    background-color: #28a745;
+    margin-bottom: 1rem;
+    }
+
+    a[href*="criar"] button:hover {
+    background-color: #1e7e34;
+    }
+  </style>
 </head>
 
 <body>
-  <header>
+  <header>  
     <nav>
-      <span class="logo">SSVP</span>
+      <a class="logo" href="https://www.ssvpbrasil.org.br/">SSVP</a>
       <ul class="menu">
         <li><a>Início</a></li>
-        <li><a>Lista de Assistidos</a></li>
-        <li><a>Pag 3</a></li>
       </ul>
-      <a class="git">Github</a>
+      <a class="git" href="https://github.com/DanielMakiyama/projetoPHP-ads2">Github</a>
     </nav>
   </header>
 
   
   <main>
-      <div class="hero-principal"><
+      <div class="hero-principal">
         <section class="hero">
           <header class="hero-content">
             <span class="cor-azul">SISTEMA DE ORGANIZAÇÃO PARA CONFERÊNCIAS</span>
@@ -36,9 +85,6 @@ $clientes = $_REQUEST['clientes'];
             <hr/>
             <h2 class="hero-sub">Conferência Nossa Senhora Aparecida</h2>
           </header>
-          <div class="hero-figures">
-            <figure><img src="ssvp_logo.jpg"></figure>
-          </div>
         </section>
       </div>
 
@@ -54,29 +100,21 @@ $clientes = $_REQUEST['clientes'];
         </header>
 
           <div class="text1-container">
-            <div class="text1-card">
-              <header class="text1-card-cabeca">
+            <div class="text1-container-card">
+              <header class="text1-container-cabeca">
                 <div class="text1-card-detalhes">
-                  <span classe="cor-2">Um pouco sobre...</span>
-                  <h3>O que é a SSVP?</h3>
+                  <span class="cor-branca">Um pouco sobre...</span>
+                  <h3 class="cor-branca-title">O que é a SSVP?</h3>
                   <p class="cor-branca">A Sociedade São Vicente de Paulo é uma organização católica que se dedica a ajudar
-                    os mais necessitados através de caridade e do serviço. Fundado em 18833 por Antônio Frederico
+                    os mais necessitados através de caridade e do serviço. Fundado em 1833 por Antônio Frederico
                   Ozam. </p>
                 </div>  
               </header>
-              <p>outra coisa q n sei oq é vai se fuder</p>
             <div>
-                <span>OUTRO DIV MANO Q ISSO</span>
+                <span class="cor-branca">SSVP</span>
           </div>
       </section>
   </main>
-
-  <footer>
-      <p class="text1-title"> TRABALHO FEITO POR: </p>
-      <p class="autores"> Daniel Shizuo Moura Makiyama </p>
-      <p class="autores"> Fabricio de Souza Gonçalves </p>
-  </footer>
-
 
 <body>
   <br><br><br>
@@ -90,22 +128,23 @@ $clientes = $_REQUEST['clientes'];
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                  <th scope="col">Código</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Endereço</th>
-                  <th scope="col">Idade</th>
-                  <th scope="col">Cpf</th>
-                  <th scope="col">Cep</th>
-                  <th scope="col">Media Salárial</th>
-                  <th scope="col">Stiuação de moradia</th>
-                  <th scope="col">Quantidade de Pessoas na casa</th>
-                  <th scope="col">Número de Telefone</th>
-                  <th scope="col">Data de Nascimento</th>
-                  <th scope="col">Ações</th>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Endereço</th>
+                  <th>Idade</th>
+                  <th>Cpf</th>
+                  <th>Cep</th>
+                  <th>Media Salárial</th>
+                  <th>Situação de moradia</th>
+                  <th>Quantidade de Pessoas na casa</th>
+                  <th>Número de Telefone</th>
+                  <th>Data de Nascimento</th>
+                  <th>Ações</th>
               </tr>
             </thead>
             <tbody>
                 <?php foreach ($clientes as $cliente): ?>
+                  
               <tr>
                 <td><?php echo htmlspecialchars($cliente->getId()); ?></td> 
                 <td><?php echo htmlspecialchars($cliente->getNome()); ?></td>
@@ -118,21 +157,23 @@ $clientes = $_REQUEST['clientes'];
                 <td><?php echo htmlspecialchars($cliente->getPessoasCasa()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getNumTel()); ?></td>
                 <td><?php echo htmlspecialchars($cliente->getDataNasc()); ?></td>
-
-
-                
-
-                
                 <td>
-                  <a href="index.php?action=editar&id=<?php echo $cliente->getId(); ?>"><button type="button" class="btn btn-success">Editar</button></a>
-                  <a href="index.php?action=excluir&id=<?php echo $cliente->getId(); ?>" onclick="return confirm('Tem certeza que deseja excluir este cliente?')"><button type="button" class="btn btn-danger">Excluir</button></a>
+                  <a href="index.php?action=editar&id=<?php echo $cliente->getId(); ?>"><button type="button">Editar</button></a>
+                  <a href="index.php?action=excluir&id=<?php echo $cliente->getId(); ?>" onclick="return confirm('Tem certeza que deseja excluir este cliente?')"><button type="button">Excluir</button></a>
                 </td>
               </tr>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
           </table>
-          <a href="index.php?action=criar"><button type="button" class="btn btn-primary">Adicionar Cliente</button></a>
+          <a href="index.php?action=criar"><button type="button">Adicionar Cliente</button></a>
         </div>
+        
 </body>
+
+  <footer>
+      <p class="cor-azul"> TRABALHO FEITO POR: </p>
+      <p class="autores"> Daniel Shizuo Moura Makiyama </p>
+      <p class="autores"> Fabricio de Souza Gonçalves </p>
+  </footer>
 
 </html>
